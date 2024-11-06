@@ -53,4 +53,32 @@ public class Recursividad {
         if (n == 0) return 0;
         return fibonacci(n -1) + fibonacci(n - 2);
     }
+
+
+    public int busquedaSecuencialRecursiva (int[] arreglo, int elemento, int posicion){
+        
+        if (posicion >=  arreglo.length){
+            return -1;
+            }
+            if (arreglo[posicion] == elemento){
+                return posicion;
+            }
+                return busquedaSecuencialRecursiva(arreglo, elemento, posicion+1);
+    }
+
+    public int  busquedaBinariaRecursiva(int[] arreglo, int elemento, int inicio, int fin){
+        
+        if (inicio > fin){
+            return -1;
+        }
+        int medio = (inicio + fin) / 2;
+        if (arreglo[medio] == elemento){
+            return medio;
+        }
+        if (arreglo[medio] < elemento){
+            return busquedaBinariaRecursiva(arreglo, elemento, medio+1, fin);
+        }
+        return  busquedaBinariaRecursiva(arreglo, elemento, inicio, medio-1);
+
+    }
 }

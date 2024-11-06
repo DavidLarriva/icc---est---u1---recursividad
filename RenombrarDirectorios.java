@@ -1,40 +1,40 @@
 
 import java.io.File;
+
 public class RenombrarDirectorios {
-    
-    public void renombrarDirectorios(String path) {
-        //Validamos que el path sea un directorio
-        File  directorio = new File(path);
-        if(!directorio.exists() || !directorio.isDirectory()) {
-            System.out.println("La rita path no es un directorio xd");
+
+    public void RenombrarDirectorios(String path){
+        //validar que el path sea un directorio
+        File directorio = new File(path);
+        if(!directorio.exists() || !directorio.isDirectory()){
+            System.out.println("La ruta path no es un directorio");
             return;
-            
         }
-         //ACA vamos a cambiar los nombres
-        //System.out.println("La ruta path es valida");
-        renombrarDirectoriosInternos(directorio);
+        //Aca vamos a cambiar los nombres de los directorios
 
-
+        //System.out.println("La  ruta path es valida");
+        RenombrarDirectoriosInternos(directorio);
     }
-    public void renombrarDirectoriosInternos(File directorio) {
-        // Listar todos los archivos y/o carpetas hijas
-        File[] archivos = directorio.listFiles();
-        if  (archivos == null) {
+
+    public void RenombrarDirectoriosInternos(File directorio){
+        //Listar todos los archivos y/o carpetas hijas
+        File[] archivosInternos = directorio.listFiles();
+        if(archivosInternos == null){
             return;
         }
-    
-        for(File directorioArchivo :  archivos) {
-            if(directorioArchivo.isDirectory()) {
-                // Renombrar el directorio
+        for(File directorioArchivo : archivosInternos){
+            if(directorioArchivo.isDirectory()){ //si es carpeta cambio nombre
                 String nombreCarpeta = directorioArchivo.getName();
-                String nombreNuevo = "nuevo-" + nombreCarpeta;
-                
-                
-
+                String nombreNuevo = "Prueba-" + nombreCarpeta;
+                File nuevoDirectorio = new File(directorioArchivo.getParent(), nombreNuevo);
+                if (directorioArchivo.renameTo(nuevoDirectorio)) {
+                    System.out.println("Directorio renombrado: " + nombreCarpeta + " -> " + nombreNuevo);
+                    // Llamada recursiva con el nuevo nombre del directorio
+                    RenombrarDirectoriosInternos(nuevoDirectorio);
+                } else {
+                    System.out.println("No se pudo renombrar el directorio: " + nombreCarpeta);
+                }
+            }
         }
-
-
-
     }
-}
 }

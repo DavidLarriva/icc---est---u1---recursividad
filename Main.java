@@ -19,5 +19,31 @@ public class Main {
 
             RenombrarDirectorios rd =  new RenombrarDirectorios();
             rd.renombrarDirectorios("directorios");
+
+            int[] arregloSecuencial = {132,8,424,490,5};
+            int elementoBuscadoSecuencial = 5;
+            int resultadoSecuencial = rec.busquedaSecuencialRecursiva(arregloSecuencial, elementoBuscadoSecuencial, 0);
+
+            if (resultadoSecuencial != -1){
+                System.out.println("");
+                System.out.println("Valor encontrado en el elemento (búsqueda secuencial): " + resultadoSecuencial);
+            } else {
+                System.out.println("");
+                System.out.println("Valor no encontrado (búsqueda secuencial).");
+            }
+
+            int[] arregloBinario = {18,87,40,99,7};
+            int elementoBuscadoBin = 98;
+            int resultadoBinario = rec.busquedaBinariaRecursiva(arregloBinario, elementoBuscadoBin, 0, arregloBinario.length - 1);
+
+            if  (resultadoBinario != -1){
+                System.out.println("");
+                System.out.println("Valor encontrado en el elemento (búsqueda binaria): " + resultadoBinario);
+                } else {
+                    System.out.println("");
+                    System.out.println("Valor no encontrado (búsqueda binaria).");
+                }
+
     }
-}
+    }
+
